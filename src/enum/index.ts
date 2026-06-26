@@ -1,0 +1,60 @@
+export enum responseName {
+  ok = 'OK',
+  created = 'Created',
+  failure = 'Failure',
+}
+
+export enum permissions {
+  createNewCase = 'createNewCase',
+  importBulkCases = 'importBulkCases',
+  viewUserListing = 'viewUserListing',
+  addNewUser = 'addNewUser',
+  deleteUser = 'deleteUser',
+  createAdminUser = 'createAdminUser',
+  viewHomeScreen = 'viewHomeScreen',
+  viewPaymentsAndAuthorizations = 'viewPaymentsAndAuthorizations',
+  retryPayment = 'retryPayment',
+  retryCapture = 'retryCapture',
+  viewCaseDetails = 'viewCaseDetails',
+  viewClientsForSelf = 'viewClientsForSelf',
+  viewClientsForAllUsers = 'viewClientsForAllUsers',
+  viewCreditorsForSelf = 'viewCreditorsForSelf',
+  viewCreditorsForAllUsers = 'viewCreditorsForAllUsers',
+  editPaymentsNotificationSettings = 'editPaymentsNotificationSettings',
+  editAuthorizationInterval = 'editAuthorizationInterval',
+  editRetryInterval = 'editRetryInterval',
+  viewNotificationTemplates = 'viewNotificationTemplates',
+  viewCustomFields = 'viewCustomFields',
+  addNotificationTemplate = 'addNotificationTemplate',
+  editNotificationTemplate = 'editNotificationTemplate',
+  addCustomFields = 'addCustomFields',
+  deleteNotificationTemplate = 'deleteNotificationTemplate',
+  editCustomFields = 'editCustomFields',
+  deleteCustomFields = 'deleteCustomFields',
+  viewCaseStatuses = 'viewCaseStatuses',
+  addCaseStatus = 'addCaseStatus',
+  editCaseStatus = 'editCaseStatus',
+  deleteCaseStatus = 'deleteCaseStatus',
+  viewPipeline = 'viewPipeline',
+  createPipeline = 'createPipeline',
+  editPipeline = 'editPipeline',
+  deletePipeline = 'deletePipeline',
+  addRole = 'addRole',
+  updateRole = 'updateRole',
+  deleteRole = 'deleteRole',
+  viewAnalyticsForSelf = 'viewAnalyticsForSelf',
+  viewAnalyticsForAllusers = 'viewAnalyticsForAllusers',
+}
+
+export enum User {
+  superAdmin = 'Super Admin',
+  admin = 'Admin',
+  docter = 'Doctor',
+  patient = 'Patient',
+}
+
+export enum Gender {
+  Male = 'Male',
+  Female = 'Female',
+  Other = 'Other',
+}
