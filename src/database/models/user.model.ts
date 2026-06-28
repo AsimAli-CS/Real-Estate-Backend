@@ -6,9 +6,13 @@ import UpdateLog from './updateLogs.model';
 import { v4 } from 'uuid';
 
 const userModel: Schema = new Schema({
-  name: {
+  username: {
     type: String,
     required: true,
+  },
+  name: {
+    type: String,
+    required: false,
   },
   email: {
     type: String,

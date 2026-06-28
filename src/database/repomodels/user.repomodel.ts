@@ -2,6 +2,7 @@ import commonUtil from '../../utils/common.util';
 
 export class User {
   name = '';
+  username = '';
   email = '';
   password = '';
   verifyToken: string;

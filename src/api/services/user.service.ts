@@ -131,11 +131,13 @@ class UserService {
     return [true, user];
   }
 
-  getAllUsers = async (req: Request): Promise<[boolean, {} | string]> => {
+  getAllUsers = async (
+    req: Request
+  ): Promise<[boolean, { users: IUser[]; totalUsers: number } | string]> => {
     const filters: Record<string, any> = {
       role: { $ne: 'Admin' }, // Exclude Admin users
     };
-    let users = await this.userRepository.getAll<IUser>(
+    const users = await this.userRepository.getAll<IUser>(
       filters,
       undefined,
       undefined,

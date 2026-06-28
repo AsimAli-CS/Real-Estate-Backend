@@ -7,7 +7,8 @@ import Joi from 'joi';
 class UserRequests {
   async createUser(req: Request, res: Response, next: NextFunction) {
     const schema = Joi.object({
-      name: Joi.string().required(),
+      username: Joi.string().required(),
+      name: Joi.string(),
       email: Joi.string().email().required(),
       password: Joi.string().required(),
 
