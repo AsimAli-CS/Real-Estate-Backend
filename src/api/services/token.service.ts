@@ -30,7 +30,7 @@ class TokenService {
     }
   };
   private generateJwtToken(
-    payload: {},
+    payload: object,
     jwtKey: string,
     expiresIn: string
   ): string {
