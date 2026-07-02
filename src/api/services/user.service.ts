@@ -193,6 +193,45 @@ class UserService {
     }
     return [true, updateUser];
   }
+
+  async oauthLogin(req: Request): Promise<[boolean, { user: Partial<IUser>; token: string } | string]> {
+    const { email, name ,photo} = req.body;
+    let userExist = await this.userRepository.getOne<IUser>({ email: email.toLowerCase() });
+
+    if (!userExist) 
+      {
+        const generatedPassword = Math.random().toString(36).slice(-8); // Generate a random password
+        req.body.password = generatedPassword;
+        const newUser = new User();
+        newUser.email = email.toLowerCase();
+        newUser.name = name;
+        newUser.photo = photo;
+        const validatedUser = DataCopier.copy(newUser, req.body as IUser);
+        userExist = await this.userRepository.create<IUser>(validatedUser);
+    }
+
+    const uuid = uuidv4();
+    const token = await this.tokenService.create(
+      userExist._id as mongoose.Types.ObjectId,
+      uuid,
+      '7d'
+    );
+    
+    await this.userRepository.updateById<IUser>(userExist._id.toString(), {
+      sessionIds: uuid,
+      updatedAt: commonUtil.getCurrentDate(),
+    });
+
+    return [
+      true,
+      {
+        user: omit(JSON.parse(JSON.stringify(userExist)), 'password'),
+        token: token,
+      },
+    ];
+  }
+
+
 }
 
 export default UserService;

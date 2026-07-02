@@ -40,6 +40,7 @@ const userModel: Schema = new Schema({
   gender: {
     type: String,
   },
+  photo:{ type: String },
   sessionIds: {
     type: Array<string>,
     select: false,

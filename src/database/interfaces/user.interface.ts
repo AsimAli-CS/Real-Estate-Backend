@@ -10,6 +10,7 @@ export interface IUser extends Document {
   isActive: boolean;
   phone: string;
   gender: string;
+  photo: string;
   sessionIds: Array<string>;
   isDeleted: boolean;
   createdAt: string;

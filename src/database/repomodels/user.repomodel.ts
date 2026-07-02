@@ -10,6 +10,7 @@ export class User {
   isActive = false;
   phone = '';
   gender = '';
+  photo = '';
   isDeleted = false;
   sessionIds = Array<string>();
   createdAt = commonUtil.getCurrentDate();
