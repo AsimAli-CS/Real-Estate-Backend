@@ -8,7 +8,6 @@ import { v4 } from 'uuid';
 const userModel: Schema = new Schema({
   username: {
     type: String,
-    required: true,
   },
   name: {
     type: String,
