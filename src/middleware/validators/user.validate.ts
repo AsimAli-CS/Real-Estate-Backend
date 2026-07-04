@@ -31,11 +31,10 @@ class UserRequests {
 
   async updateUser(req: Request, res: Response, next: NextFunction) {
     const schema = Joi.object({
-      name: Joi.string().required(),
-      phone: Joi.string().pattern(/^\+?[1-9]\d{1,14}$/),
-      gender: Joi.string()
-        .valid(...Object.values(Gender))
-        .required(),
+      name: Joi.string(),
+      email: Joi.string().email(),
+      password: Joi.string(),
+      photo: Joi.string(),
     });
     const { error } = schema.validate(req.body);
     if (!error) {
