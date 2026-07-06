@@ -131,6 +131,22 @@ class UserService {
     return [true, user];
   }
 
+    async deleteUser(req: Request): Promise<[boolean, IUser | string]> {
+    const reqTemp: any = req;
+    const userId = reqTemp?.id;
+    const user = await this.userRepository.updateById<IUser>(userId, {
+      isDeleted: true,
+      isActive: false,
+      password: '',
+      updatedAt: commonUtil.getCurrentDate(),
+    });
+    if (!user) {
+      return [false, constants.notFoundMessage('User')];
+    }
+    return [true, user];
+  }
+
+
   getAllUsers = async (
     req: Request
   ): Promise<[boolean, { users: IUser[]; totalUsers: number } | string]> => {

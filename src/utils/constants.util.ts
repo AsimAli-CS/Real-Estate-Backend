@@ -56,11 +56,5 @@ export default {
   failureFetchMessage: (entity: string) => `Failed to fetch ${entity}.`,
   unexpectedErrorMessage: (action: string) =>
     `An unexpected error occurred while ${action}.`,
-  paymentAlreadyExistsMessage: (name: string): string =>
-    `payment is already captured for this transaction`,
-  callMadesuccessMessage: (name: string): string =>
-    `${name} made successfully!`,
-  paymentPausedSuccessfully: (name: string): string =>
-    `${name} payment paused successfully`,
   successfullyMessage: (name: string): string => `${name} successfully`,
 };

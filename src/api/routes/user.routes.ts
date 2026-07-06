@@ -38,6 +38,12 @@ router.delete(
   userController.deleteUserById
 );
 
+router.delete(
+  '/deleteUser',
+  authorize.validateAuth,
+  userController.deleteUser
+);
+
 router.post('/oauth', userController.oauthLogin);
 
 export default router;
