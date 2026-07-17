@@ -60,7 +60,7 @@ class ListingController {
 
   getListingById = async (req: Request, res: Response) => {
     try {
-      const response = await this.listingService.getListingById(req.params.id);
+      const response = await this.listingService.getListingById(req);
       if (!response[0]) {
         return res
           .status(constants.CODE.BAD_REQUEST)
@@ -83,7 +83,7 @@ class ListingController {
 
   getListings = async (req: Request, res: Response) => {
     try {
-      const response = await this.listingService.getListings();
+      const response = await this.listingService.getListings(req);
       if (!response[0]) {
         return res
           .status(constants.CODE.BAD_REQUEST)

@@ -52,9 +52,13 @@ class ListingService {
     return [true, updatedListing];
   }
 
-  async getListingById(listingId: string): Promise<[boolean, Partial<IListing> | null | string]> {
+  async getListingById(req: Request): Promise<[boolean, Partial<IListing> | null | string]> {
+    const reqTemp: any = req;
+    const userId = reqTemp?.id;
+    const listingId = req.params.id;
     const existingListing = await this.listingRepository.getOne<IListing>({
       _id: listingId,
+      userId: userId,
       isDeleted: false,
     });
 
@@ -65,8 +69,12 @@ class ListingService {
     return [true, existingListing];
   }
 
-  async getListings(): Promise<[boolean, Partial<IListing>[] | string]> {
+  async getListings(req: Request): Promise<[boolean, Partial<IListing>[] | string]> {
+    const reqTemp: any = req;
+    const userId = reqTemp?.id;
+
     const listings = await this.listingRepository.getAll<IListing>({
+      userId: userId,
       isDeleted: false,
     });
 
