@@ -30,7 +30,7 @@ class ListingService {
   async updateListing(req: Request): Promise<[boolean, Partial<IListing> | null | string]> {
     const reqTemp: any = req;
     const userId = reqTemp?.id;
-    const listingId = req.body.id;
+    const listingId = req.params.id;
 
     const existingListing = await this.listingRepository.getOne<IListing>({
       _id: listingId,
@@ -81,8 +81,26 @@ class ListingService {
     return [true, listings];
   }
 
-  async deleteListingById(listingId: string): Promise<[boolean, string]> {
+  async getAllListings(req: Request): Promise<[boolean, Partial<IListing>[] | string]> {
+    const reqTemp: any = req;
+    const userId = reqTemp?.id;
+
+    const listings = await this.listingRepository.getAll<IListing>({
+      userId: userId,
+      isDeleted: false,
+    });
+
+    return [true, listings];
+  }
+
+  async deleteListingById(req: Request): Promise<[boolean, string]> {
+
+    const reqTemp: any = req;
+    const userId = reqTemp?.id;
+    const listingId = req.params.id;
+
     const existingListing = await this.listingRepository.getOne<IListing>({
+      userId:userId,
       _id: listingId,
       isDeleted: false,
     });
